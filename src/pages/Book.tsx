@@ -55,6 +55,51 @@ const Book = () => {
     return appointmentType === "barber-comes" ? service.price + TRAVEL_FEE : service.price;
   };
 
+  const formatCalendarDate = (date: Date) => date.toISOString().replace(/[-:]|\.\d{3}/g, "");
+
+  const getAppointmentDateTime = () => {
+    if (!selectedDate || !selectedTime) return null;
+
+    const [timePart, meridiem] = selectedTime.split(" ");
+    const [hoursString, minutesString] = timePart.split(":");
+
+    let hours = parseInt(hoursString, 10);
+    const minutes = parseInt(minutesString, 10);
+
+    if (meridiem === "PM" && hours !== 12) hours += 12;
+    if (meridiem === "AM" && hours === 12) hours = 0;
+
+    const date = new Date(selectedDate);
+    date.setHours(hours, minutes, 0, 0);
+
+    return date;
+  };
+
+  const handleAddToGoogleCalendar = () => {
+    if (!service || !appointmentType) return;
+
+    const startDate = getAppointmentDateTime();
+    if (!startDate) return;
+
+    const endDate = new Date(startDate.getTime() + 60 * 60 * 1000);
+    const location = appointmentType === "i-go" ? BARBER_ADDRESS : clientAddress;
+
+    const description = [
+      `Service: ${service.title}`,
+      `Price: £${getTotalPrice()}`,
+      appointmentType === "i-go" ? "Visit to barber base" : "Mobile visit",
+    ].join("\n");
+
+    const calendarUrl = new URL("https://calendar.google.com/calendar/render");
+    calendarUrl.searchParams.set("action", "TEMPLATE");
+    calendarUrl.searchParams.set("text", `${service.title} haircut appointment`);
+    calendarUrl.searchParams.set("dates", `${formatCalendarDate(startDate)}/${formatCalendarDate(endDate)}`);
+    calendarUrl.searchParams.set("details", description);
+    calendarUrl.searchParams.set("location", location);
+
+    window.open(calendarUrl.toString(), "_blank");
+  };
+
   const canProceed = () => {
     switch (step) {
       case 1:
@@ -456,7 +501,7 @@ const Book = () => {
                   <Button onClick={openMaps} className="flex-1">
                     Open in Maps
                   </Button>
-                  <Button variant="outline" className="flex-1">
+                  <Button variant="outline" className="flex-1" onClick={handleAddToGoogleCalendar}>
                     Add to Calendar
                   </Button>
                 </div>
