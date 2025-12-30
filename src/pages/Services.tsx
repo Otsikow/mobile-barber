@@ -75,7 +75,7 @@ const Services = () => {
         </div>
 
         <p className="text-muted-foreground mb-8">
-          Choose your service and book your appointment.
+          Mobile-first barbering by Augustine. Choose a service, then pick whether you come to the Redcar base or I travel to you in Middlesbrough & Redcar.
         </p>
 
         <div className="space-y-4">
@@ -116,8 +116,7 @@ const Services = () => {
 
         {/* Travel Note */}
         <p className="text-sm text-muted-foreground mt-6 p-4 bg-card rounded-lg border border-border">
-          <span className="text-primary">Note:</span> A travel fee applies when
-          'Barber comes to me' is selected.
+          <span className="text-primary">Note:</span> £5 travel fee applies when you book a home visit. The base at 54 Blakey Close (TS10 4PB) is for appointments only — no walk-ins.
         </p>
 
         {/* FAQ Accordion */}

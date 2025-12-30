@@ -8,7 +8,7 @@ const Header = () => {
         <Link to="/" className="flex items-center gap-2 group">
           <Scissors className="w-6 h-6 text-primary transition-transform duration-300 group-hover:rotate-45" />
           <span className="text-xl font-heading font-bold text-foreground">
-            Swift<span className="text-primary">Fade</span>
+            Augustine <span className="text-primary">Mobile Barber</span>
           </span>
         </Link>
       </div>
