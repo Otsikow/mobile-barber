@@ -72,7 +72,7 @@ const Index = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
-            alt="SwiftFade Mobile Barber"
+            alt="Augustine Mobile Barber"
             className="w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
@@ -81,11 +81,11 @@ const Index = () => {
         <div className="relative z-10 container pt-20 pb-12">
           <div className="max-w-lg mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 leading-tight">
-              Mobile Barber in{" "}
-              <span className="text-gradient-gold">Middlesbrough & Redcar</span>
+              Augustine – Mobile Barber for{" "}
+              <span className="text-gradient-gold">Redcar & Middlesbrough</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              We come to you — or you can come to us in Redcar.
+              Premium fades and grooming with zero hassle. Visit my base in Redcar or book a home visit.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -94,11 +94,16 @@ const Index = () => {
                   Book Appointment
                 </Button>
               </Link>
-              <Link to="/services">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                  View Prices
-                </Button>
-              </Link>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto"
+                asChild
+              >
+                <a href="https://wa.me/447990427539" target="_blank" rel="noreferrer">
+                  Chat on WhatsApp
+                </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -113,7 +118,7 @@ const Index = () => {
           </FeatureBadge>
           <FeatureBadge>
             <MapPin className="w-4 h-4 mr-2 text-primary" />
-            No Shop Needed
+            Base in Redcar (no walk-ins)
           </FeatureBadge>
           <FeatureBadge>
             <Clock className="w-4 h-4 mr-2 text-primary" />
@@ -234,19 +239,52 @@ const Index = () => {
         <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
           Contact & Service Area
         </h2>
-        <div className="space-y-2 text-muted-foreground">
-          <p>
-            <span className="text-foreground font-medium">Email:</span>{" "}
-            contact@swiftfade.co.uk
-          </p>
-          <p>
-            <span className="text-foreground font-medium">Phone:</span>{" "}
-            07700 900000
-          </p>
-          <p>
-            <span className="text-foreground font-medium">Service Area:</span>{" "}
-            Middlesbrough & Redcar
-          </p>
+        <div className="space-y-4">
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border">
+            <div>
+              <p className="text-sm text-muted-foreground">Call or WhatsApp</p>
+              <p className="text-lg font-semibold text-foreground">07990 427539</p>
+            </div>
+            <div className="ml-auto flex gap-2">
+              <Button size="sm" asChild>
+                <a href="https://wa.me/447990427539" target="_blank" rel="noreferrer">
+                  Message on WhatsApp
+                </a>
+              </Button>
+              <Button variant="outline" size="sm" asChild>
+                <a href="tel:+447990427539">Call</a>
+              </Button>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-card border border-border">
+            <p className="text-foreground font-medium">Base location (not a walk-in shop)</p>
+            <p className="text-muted-foreground text-sm">54 Blakey Close, Redcar TS10 4PB</p>
+          </div>
+
+          <div className="aspect-video rounded-xl overflow-hidden bg-muted">
+            <iframe
+              title="Augustine Barber Base"
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(
+                "54 Blakey Close, Redcar TS10 4PB, United Kingdom"
+              )}`}
+              className="w-full h-full border-0"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() =>
+              window.open(
+                "https://www.google.com/maps/dir/?api=1&destination=54%20Blakey%20Close%2C%20Redcar%20TS10%204PB",
+                "_blank"
+              )
+            }
+          >
+            Get Directions
+          </Button>
         </div>
       </section>
 

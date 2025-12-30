@@ -15,6 +15,8 @@ import kidsImage from "@/assets/kids-cut.jpg";
 import fullGroomingImage from "@/assets/full-grooming.jpg";
 
 const BARBER_ADDRESS = "54 Blakey Close, Redcar TS10 4PB, United Kingdom";
+const WHATSAPP_LINK = "https://wa.me/447990427539";
+const PHONE_NUMBER = "+447990427539";
 
 const services = [
   { id: "haircut", title: "Haircut", price: 20, image: haircutImage, description: "Precision cut and style." },
@@ -197,7 +199,7 @@ const Book = () => {
                   <Navigation className="w-6 h-6 text-primary" />
                   <div>
                     <h3 className="font-semibold text-foreground">Barber comes to me</h3>
-                    <p className="text-sm text-muted-foreground">+£{TRAVEL_FEE} travel fee</p>
+                    <p className="text-sm text-muted-foreground">+£{TRAVEL_FEE} travel fee (home visit)</p>
                   </div>
                 </div>
               </button>
@@ -213,8 +215,8 @@ const Book = () => {
                 <div className="flex items-center gap-3">
                   <MapPin className="w-6 h-6 text-primary" />
                   <div>
-                    <h3 className="font-semibold text-foreground">I go to the barber</h3>
-                    <p className="text-sm text-muted-foreground">54 Blakey Close, Redcar</p>
+                    <h3 className="font-semibold text-foreground">I go to Augustine's base</h3>
+                    <p className="text-sm text-muted-foreground">54 Blakey Close, Redcar (appointment only)</p>
                   </div>
                 </div>
               </button>
@@ -234,6 +236,7 @@ const Book = () => {
               <div className="space-y-4">
                 <div className="p-4 rounded-xl bg-card border border-border">
                   <p className="text-foreground font-medium">{BARBER_ADDRESS}</p>
+                  <p className="text-sm text-muted-foreground mt-1">Base location for appointments only (no walk-ins).</p>
                 </div>
                 <div className="aspect-video rounded-xl overflow-hidden bg-muted">
                   <iframe
@@ -414,7 +417,7 @@ const Book = () => {
                 </div>
                 <div>
                   <p className="text-sm text-primary">
-                    {appointmentType === "i-go" ? "In-Shop" : "Mobile"}
+                    {appointmentType === "i-go" ? "Barber base" : "Mobile visit"}
                   </p>
                   <h3 className="font-semibold text-foreground">{service?.title}</h3>
                   <p className="text-sm text-muted-foreground">
@@ -463,24 +466,32 @@ const Book = () => {
             <div className="p-4 rounded-xl bg-card border border-border mb-6">
               <h4 className="font-semibold text-foreground mb-2">What happens next</h4>
               <p className="text-sm text-muted-foreground">
-                You'll receive reminders 24 hours and 2 hours before your appointment.
+                You'll receive WhatsApp or SMS reminders 24 hours before your appointment and an optional same-day nudge.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-card border border-border">
               <h4 className="font-semibold text-foreground mb-2">Need help?</h4>
               <p className="text-sm text-muted-foreground mb-4">
-                Contact us via WhatsApp, phone, or email.
+                Message Augustine directly if you need to tweak your booking.
               </p>
               <div className="flex flex-wrap gap-2">
                 <Button variant="dark" size="sm" asChild>
-                  <a href="https://wa.me/447700900000">WhatsApp</a>
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer">
+                    WhatsApp
+                  </a>
                 </Button>
                 <Button variant="dark" size="sm" asChild>
-                  <a href="tel:07700900000">Call</a>
+                  <a href={`tel:${PHONE_NUMBER}`}>Call</a>
                 </Button>
                 <Button variant="outline" size="sm" asChild>
-                  <a href="mailto:contact@swiftfade.co.uk">Email</a>
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=54%20Blakey%20Close%2C%20Redcar%20TS10%204PB"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Directions
+                  </a>
                 </Button>
               </div>
             </div>
