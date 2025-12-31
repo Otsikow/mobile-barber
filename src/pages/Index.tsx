@@ -78,7 +78,7 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         </div>
 
-        <div className="relative z-10 container pt-20 pb-12">
+        <div className="relative z-10 container pt-48 md:pt-64 pb-12">
           <div className="max-w-lg mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 leading-tight">
               Augustine – Mobile Barber for{" "}
